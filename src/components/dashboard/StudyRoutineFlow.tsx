@@ -355,10 +355,10 @@ function CreateRoutineCard({
                   if (v) onCopyPrevious(v);
                 }}
               >
-                <SelectTrigger className="h-8 w-[220px] text-xs">
+                <SelectTrigger className="h-9 w-full text-xs sm:w-[220px]">
                   <SelectValue placeholder="Copy previous routine" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="max-w-[calc(100vw-2rem)]">
                   {routines.map((r) => (
                     <SelectItem key={r.id} value={r.id}>
                       {r.name}
@@ -369,6 +369,7 @@ function CreateRoutineCard({
             )}
           </div>
         </CardHeader>
+
         <CardContent>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Field label="Level">
