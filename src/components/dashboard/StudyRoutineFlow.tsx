@@ -448,10 +448,10 @@ function CreateRoutineCard({
                 </SelectContent>
               </Select>
             </Field>
-            <div className="flex items-end gap-2">
+            <div className="flex flex-col gap-2 sm:col-span-2 sm:flex-row sm:items-end lg:col-span-1">
               <Button
                 variant="secondary"
-                className="gap-2 shadow-sm"
+                className="h-10 w-full min-w-0 gap-2 shadow-sm sm:flex-1"
                 disabled={!canCreate}
                 onClick={() => {
                   onSaveRoutine({
@@ -463,13 +463,18 @@ function CreateRoutineCard({
                   });
                 }}
               >
-                Save Routine
+                <span className="truncate">Save Routine</span>
               </Button>
-              <Button className="w-full gap-2 shadow-sm" onClick={onCreate}>
-                <Plus className="h-4 w-4" /> Add Task
+              <Button
+                className="h-10 w-full min-w-0 gap-2 shadow-sm sm:flex-1"
+                onClick={onCreate}
+              >
+                <Plus className="h-4 w-4 shrink-0" />
+                <span className="truncate">Add Task</span>
               </Button>
             </div>
           </div>
+
         </CardContent>
       </Card>
     </motion.div>
