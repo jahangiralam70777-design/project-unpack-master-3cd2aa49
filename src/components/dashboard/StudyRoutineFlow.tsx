@@ -355,10 +355,10 @@ function CreateRoutineCard({
                   if (v) onCopyPrevious(v);
                 }}
               >
-                <SelectTrigger className="h-8 w-[220px] text-xs">
+                <SelectTrigger className="h-9 w-full text-xs sm:w-[220px]">
                   <SelectValue placeholder="Copy previous routine" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="max-w-[calc(100vw-2rem)]">
                   {routines.map((r) => (
                     <SelectItem key={r.id} value={r.id}>
                       {r.name}
@@ -369,6 +369,7 @@ function CreateRoutineCard({
             )}
           </div>
         </CardHeader>
+
         <CardContent>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Field label="Level">
@@ -447,10 +448,10 @@ function CreateRoutineCard({
                 </SelectContent>
               </Select>
             </Field>
-            <div className="flex items-end gap-2">
+            <div className="flex flex-col gap-2 sm:col-span-2 sm:flex-row sm:items-end lg:col-span-1">
               <Button
                 variant="secondary"
-                className="gap-2 shadow-sm"
+                className="h-10 w-full min-w-0 gap-2 shadow-sm sm:flex-1"
                 disabled={!canCreate}
                 onClick={() => {
                   onSaveRoutine({
@@ -462,13 +463,18 @@ function CreateRoutineCard({
                   });
                 }}
               >
-                Save Routine
+                <span className="truncate">Save Routine</span>
               </Button>
-              <Button className="w-full gap-2 shadow-sm" onClick={onCreate}>
-                <Plus className="h-4 w-4" /> Add Task
+              <Button
+                className="h-10 w-full min-w-0 gap-2 shadow-sm sm:flex-1"
+                onClick={onCreate}
+              >
+                <Plus className="h-4 w-4 shrink-0" />
+                <span className="truncate">Add Task</span>
               </Button>
             </div>
           </div>
+
         </CardContent>
       </Card>
     </motion.div>
@@ -1281,7 +1287,8 @@ function TaskDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-lg">
+      <DialogContent className="max-h-[90dvh] w-[calc(100vw-1.5rem)] max-w-lg overflow-y-auto">
+
         <DialogHeader>
           <DialogTitle>{initial ? "Edit Task" : "New Task"}</DialogTitle>
           <DialogDescription>
